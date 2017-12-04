@@ -121,9 +121,9 @@
             <label class="layui-form-label"></label>
             <label class="layui-form-label" style="text-align:left;padding-left: 0px">参数加密</label>
             <div class="layui-input-inline" style="width: 95px;">
-                <input type="checkbox" name="close" lay-skin="switch" lay-filter="switchTest" lay-text="加密|OFF">
+                <input type="checkbox" name="close" lay-skin="switch" lay-filter="switchEncrypt" lay-text="加密|OFF">
             </div>
-            <div id="paramEncryptView"></div>
+            <div id="paramEncrypt{{d.id}}"></div>
             <button class="layui-btn" style="float:right"><i class="layui-icon">&#xe61f;</i></button>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -159,6 +159,9 @@
             </div>
         </div>
     </form>
+</script>
+<script id="viewAPItpl" type="text/html">
+    <table class="layui-hide" id="viewAPI"></table>
 </script>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -198,13 +201,13 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item">
-                    <a class="" href="javascript:;">首页</a>
+                    <a class="site-nav-active" href="javascript:;" data-type="tabChangeIndex">首页</a>
                 </li>
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">API</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" class="site-nav-active" data-type="newAPI">创建新的API</a></dd>
-                        <dd><a href="javascript:;">查看已有API</a></dd>
+                        <dd><a href="javascript:;" class="site-nav-active" data-type="tabNewAPI">创建新的API</a></dd>
+                        <dd><a href="javascript:;" class="site-nav-active" data-type="tabViewAPI">查看已有API</a></dd>
                         <dd><a href="javascript:;">API外部集成</a></dd>
                         <dd><a href="javascript:;">API文档工具</a></dd>
                         <dd><a href="javascript:;">API测试工具</a></dd>
@@ -244,7 +247,7 @@
 
             <div class="layui-tab layui-tab-brief" lay-filter="index-tab" lay-allowclose="true">
                 <ul class="layui-tab-title">
-                    <li class="layui-this" lay-id="11">首页</li>
+                    <li class="layui-this" lay-id="0">首页</li>
                 </ul>
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
