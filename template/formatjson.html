@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>格式化JSON</title>
+    <link rel="stylesheet" href="../css/jsonFormater.css">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jsonFormater.js"></script>
+    <script type="application/javascript">
+        var url=window.location.href;
+        url = url.replace(/~~/g,'"');
+        var index=url.indexOf('#');
+        url=url.substring(index+1,url.length);
+        $(document).ready(function () {
+            var format = function () {
+                var options = {
+                    dom: '#Canvas',
+                    isCollapsible: $('#CollapsibleView').prop('checked'),
+                    quoteKeys: $('#QuoteKeys').prop('checked'),
+                    tabSize: $('#TabSize').val()
+                };
+                window.jf = new JsonFormater(options);
+                jf.doFormat(url);
+            };
+            format();
+            $('#expandAll').click(function () {
+                window.jf.expandAll();
+            });
+            $('#collapseAll').click(function () {
+                window.jf.collapseAll();
+            });
+            $('#TabSize, #CollapsibleView, #QuoteKeys').change(function () {
+                format();
+            });
+            $('.expand').click(function () {
+                var level = $(this).data('level');
+                window.jf.collapseLevel(level);
+            });
+        });
+    </script>
+</head>
+<body>
+<pre id="results" style="margin-top: 10px;" class="success">正确的JSON格式</pre>
+<div id="Canvas" class="Canvas"></div>
+<div id="ControlsRow">
+    <span id="CollapsibleViewDetail">
+        <a href="javascript:void(0);" id="expandAll" class="btn">展开</a>
+        <a href="javascript:void(0);" id="collapseAll" class="btn">叠起</a>
+    </span>
+</div>
+</body>
+</html>

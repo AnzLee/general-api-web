@@ -9,80 +9,26 @@
       "apiProtocol": "Http",
       "apiMethod": "GET",
       "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
+      "dataPath": "127.0.0.1@ORACLE",
+      "paramNum": 2,
       "responseType": "STRING"
+    },{
+      "id": 10000,
+      "apiName": "测试API",
+      "apiProtocol": "Https",
+      "apiMethod": "POST",
+      "apiEncode": "GB2312",
+      "dataPath": "127.0.0.1@MYSQL",
+      "paramNum": 5,
+      "responseType": "<Strong>JSON</Strong>"
     },{
       "id": 10000,
       "apiName": "测试API",
       "apiProtocol": "Http",
       "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
-      "responseType": "STRING"
-    },{
-      "id": 10000,
-      "apiName": "测试API",
-      "apiProtocol": "Http",
-      "apiMethod": "GET",
-      "apiEncode": "UTF-8",
-      "dataPath": "127.0.0.1",
-      "paramNum": 4,
+      "apiEncode": "GB2312",
+      "dataPath": "127.0.0.1@MYSQL",
+      "paramNum": 3,
       "responseType": "STRING"
     }
   ]
