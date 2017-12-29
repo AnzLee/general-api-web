@@ -6,6 +6,7 @@ layui.use(['element','laytpl','form','table'], function(){
     var paramEncryptTpl = paramEncrypttpl.innerHTML
     var viewAPITpl = viewAPItpl.innerHTML
     var apiDatabaseTpl = apiDatabasetpl.innerHTML
+    var apiIframeTpl = apiIframetpl.innerHTML
 
     var $ = layui.jquery
     var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
@@ -94,21 +95,51 @@ layui.use(['element','laytpl','form','table'], function(){
                 activeNew('所有API', 'index-tab', 20, viewAPITpl, {});
                 table.render({
                     elem: '#viewAPI'
-                    , url: 'test.json'
+                    , url: '/api/api'
                     , cols: [[
                         {type: 'numbers'}
-                        , {field: 'id', width: '8%', title: 'ID', sort: true, align: 'center'}
-                        , {field: 'apiName', width: '8%', title: 'API名称', sort: true, align: 'center'}
+                        , {field: 'iD', width: '8%', title: 'ID', sort: true, align: 'center'}
+                        , {field: 'apiName', width: '10%', title: 'API名称', sort: true, align: 'center'}
                         , {field: 'apiProtocol', width: '8%', title: 'API协议', align: 'center'}
-                        , {field: 'apiMethod', width: '8%', title: 'API格式', align: 'center'}
+                        , {field: 'apiMethod', width: '8%', title: 'API类型', align: 'center'}
                         , {field: 'apiEncode', width: '8%', title: 'API编码', align: 'center'}
-                        , {field: 'dataPath', width: '20%', title: '数据库地址', sort: true, align: 'center'}
-                        , {field: 'paramNum', width: '10%', title: '参数个数', sort: true, align: 'center'}
+                        , {field: 'apiUrl', width: '18%', title: 'API地址', sort: true, align: 'center'}
+                        , {field: 'apiFormat', width: '10%', title: 'API格式', sort: true, align: 'center'}
                         , {field: 'responseType', width: '10%', title: '结果类型', sort: true, align: 'center'}
                         , {fixed: 'right', width: '16%', align:'center', toolbar: '#apiBar', title: '操作'}
                     ]]
                     , page: true
                 });
+            }
+        }
+        ,tabIframeAPI: function (othis) {
+            var tabid = 0;
+            var tabTitle = ''
+            var iframeUrl = ''
+            switch(othis.context.id)
+            {
+                case 'apiTest':
+                    tabid = 40;
+                    tabTitle = 'API测试工具';
+                    iframeUrl = '/api/swagger-ui.html'
+                    break;
+                case 'apiProp':
+                    tabid = 50;
+                    tabTitle = '性能监控'
+                    iframeUrl = '/api/druid/index.html'
+                    break;
+                default:
+                    tabid = 0;
+            }
+            if(document.getElementById('view'+tabid)){
+                element.tabChange('index-tab', tabid);
+                location.hash = 'index-tab='+ tabid;
+            } else {
+                laytpl(apiIframeTpl).render({url:iframeUrl}, function(html) {
+                    apiIframeTpl = html;
+                })
+                activeNew(tabTitle, 'index-tab', tabid, apiIframeTpl, {});
+                apiIframeTpl = apiIframetpl.innerHTML
             }
         }
         ,tabDelete: function(othis){
@@ -172,8 +203,7 @@ layui.use(['element','laytpl','form','table'], function(){
     //监听指定开关
     form.on('switch(switchEncrypt)', function(data){
         //layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-        var layid = location.hash.replace(/^#index-tab=/, '');
-        var paramEncryptView = document.getElementById('paramEncrypt'+layid);
+        var paramEncryptView = document.getElementById('paramEncrypt');
         if(this.checked){
             paramEncryptView.innerHTML = paramEncryptTpl;
         } else {

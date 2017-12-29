@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./lib/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <script type="text/html" id="apiBar">
-    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">详细</a>
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
@@ -26,6 +26,7 @@
             <div class="layui-input-inline"><input type="text" name="apiDatabase.dataType" value="{{d.dataType}}" autocomplete="off" class="layui-input" readonly ></div>
             <div class="layui-input-inline"><input type="text" name="apiDatabase.dataUsername" value="{{d.dataUsername}}" autocomplete="off" class="layui-input" readonly ></div>
             <div class="layui-input-inline"><input type="password" name="apiDatabase.dataPassword" value="{{d.dataPassword}}" autocomplete="off" class="layui-input" readonly></div>
+            <div class="layui-input-inline"><button class="layui-btn"><i class="fa fa-times fa-2" aria-hidden="true"></i></button></div>
         </div>
     </fieldset>
 </script>
@@ -149,7 +150,7 @@
             <div class="layui-input-inline" style="width: 95px;">
                 <input type="checkbox" name="close" lay-skin="switch" lay-filter="switchEncrypt" lay-text="加密|OFF">
             </div>
-            <div id="paramEncrypt{{d.id}}"></div>
+            <div id="paramEncrypt"></div>
             <button class="layui-btn" style="float:right"><i class="layui-icon">&#xe61f;</i></button>
         </div>
         <div class="layui-form-item layui-form-text">
@@ -189,6 +190,11 @@
 </script>
 <script id="viewAPItpl" type="text/html">
     <table class="layui-hide" id="viewAPI"></table>
+</script>
+<script id="apiIframetpl" type="text/html">
+    <div style="height: 430px">
+        <iframe style="border: 0" width="100%" height="100%" src="{{d.url}}"></iframe>
+    </div>
 </script>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -235,9 +241,8 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" class="site-nav-active" data-type="tabNewAPI">创建新的API</a></dd>
                         <dd><a href="javascript:;" class="site-nav-active" data-type="tabViewAPI">查看已有API</a></dd>
-                        <dd><a href="javascript:;">API外部集成</a></dd>
-                        <dd><a href="/api/swagger-ui.html">API文档工具</a></dd>
-                        <dd><a href="/api/swagger-ui.html">API测试工具</a></dd>
+                        <dd><a href="javascript:;">生成动态API</a></dd>
+                        <dd><a href="javascript:;" class="site-nav-active" data-type="tabIframeAPI" id="apiTest">API测试工具</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
@@ -245,7 +250,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;">任务调度</a></dd>
                         <dd><a href="javascript:;">历史监控</a></dd>
-                        <dd><a href="api/druid/index.html" target="_blank">性能监控</a></dd>
+                        <dd><a href="javascript:;" class="site-nav-active" data-type="tabIframeAPI" id="apiProp">性能监控</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
