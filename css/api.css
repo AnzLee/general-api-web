@@ -1,0 +1,119 @@
+@charset "utf-8";
+/* CSS Document */
+.redStar {
+    color: red;
+}
+legend {
+    color: #555a63;
+    font-weight: bold!important;
+}
+.taskExTime {
+    text-align: center;
+    float:right;
+    margin-right: 10px;
+    background-color: #069683;
+    color: #FFF;
+    font-size: 12px;
+    height: 30px;
+    border: 0;
+}
+
+.taskExTime:-ms-input-placeholder{
+    text-align: center;
+    color: white;
+}
+.taskExTime::-webkit-input-placeholder{
+    text-align: center;
+    color: white;
+}
+
+.open {
+    position: fixed;
+    width: 100px;
+    height: 40px;
+    left: 50%;
+    top: -1000px;
+    margin-left: -80px;
+    margin-top: -30px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 10px 30px;
+    color: #444;
+    transition: all ease-out 0.6s;
+}
+.open:hover {
+    border: 1px solid #aaa;
+    box-shadow: 0 0 8px #ccc inset;
+    transition: all ease-out 0.6s;
+}
+.tip-container {
+    position: fixed;
+    width: 400px;
+    height: 238px;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    margin-top: -119px;
+    margin-left: -200px;
+    background-color: #F3F3F3;
+    border-radius: 6px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+}
+.tip-container:before {
+    content: '';
+    position: absolute;
+    left: -14px;
+    top: 28px;
+    border-style: solid;
+    border-width: 10px 14px 10px 0;
+    border-color: rgba(0, 0, 0, 0) #f3f3f3 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+}
+.tip-container p {
+    display: inline;
+    width: 350px;
+    font-size: 16px;
+    color: #2526b8;
+    font-weight: 400;
+    line-height: 28px;
+    float: left;
+    margin: 0;
+}
+.tip-container .bottom {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+.tip-container .bottom .step {
+    flex: 3;
+    -webkit-flex: 3;
+    -ms-flex: 3;
+    width: 100%;
+    height: 54px;
+    background-color: #373942;
+    border-bottom-left-radius: 6px;
+    display: flex;
+}
+.tip-container .bottom .step span {
+    flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    line-height: 54px;
+    color: #fff;
+    margin-left: 25px;
+    font-size: 18px;
+}
+.slider-container {
+    width: 350px;
+    margin: 0 25px;
+    overflow: hidden;
+}
+.slider-turn {
+    width: 10000px;
+}
